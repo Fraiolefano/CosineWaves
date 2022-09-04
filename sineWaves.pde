@@ -185,7 +185,6 @@ void mouseWheel(MouseEvent e)
 void colorMode()
 {
   colorIndex=int(colorRadio.values.y);
-  println(colorIndex);
   switch (colorIndex)
   {
     case 0:
