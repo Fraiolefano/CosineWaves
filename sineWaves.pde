@@ -70,6 +70,7 @@ void setup()
   w1.setPeriod(sliderPuls.range.z);
   w2.setPeriod(sliderPuls2.range.z);
   w2.angularVelocity=-w2.angularVelocity;
+  
   drawIndex=int(drawRadio.values.y);
 }
 
@@ -264,13 +265,6 @@ void colorMode()
   w3.pointColor=w3PColor;
 }
 
-      // bgColor=color();
-      // linesColor=color();
-      // pointColor=color();
-      // w1LColor=color();
-      // w2LColor=color();
-      // w3LColor=color();
-
 void onChange()
 {
   if(menu.onChange().value)
@@ -316,26 +310,26 @@ void onChange()
 
     else if (menu.changed.el==kSign1)
     {
-      changeBtn(kSign1);
-      w1.angularVelocity=-w1.angularVelocity;
+      changeBtn(kSign1,w1);
     }
     else if (menu.changed.el==kSign2)
     {
-      changeBtn(kSign2);
-      w2.angularVelocity=-w2.angularVelocity;
+      changeBtn(kSign2,w2);
     }
 
   }
 }
 
-void changeBtn(Button btnEl)
+void changeBtn(Button btnEl,Wave wToChange )
 {
   if (btnEl.labelText==">>>>")
   {
     btnEl.labelText="<<<<";
+    wToChange.angularVelocity=-abs(wToChange.angularVelocity);
   }
   else if (btnEl.labelText=="<<<<")
   {
     btnEl.labelText=">>>>";
+    wToChange.angularVelocity=abs(wToChange.angularVelocity);
   }
 }
