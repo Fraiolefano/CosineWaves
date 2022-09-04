@@ -310,26 +310,46 @@ void onChange()
 
     else if (menu.changed.el==kSign1)
     {
-      changeBtn(kSign1,w1);
+      changeBtn(kSign1);
     }
     else if (menu.changed.el==kSign2)
     {
-      changeBtn(kSign2,w2);
+      changeBtn(kSign2);
     }
 
+    pulseSign();
   }
 }
 
-void changeBtn(Button btnEl,Wave wToChange )
+void changeBtn(Button btnEl)
 {
   if (btnEl.labelText==">>>>")
   {
     btnEl.labelText="<<<<";
-    wToChange.angularVelocity=-abs(wToChange.angularVelocity);
   }
   else if (btnEl.labelText=="<<<<")
   {
     btnEl.labelText=">>>>";
-    wToChange.angularVelocity=abs(wToChange.angularVelocity);
+  }
+}
+
+void pulseSign() //rende coerente il valore del pulsante con il verso di percorrenza
+{
+  if(kSign1.labelText==">>>>")
+  {
+    w1.angularVelocity=abs(w1.angularVelocity);
+  }
+  else
+  {
+    w1.angularVelocity=-abs(w1.angularVelocity);
+  }
+
+  if(kSign2.labelText==">>>>")
+  {
+    w2.angularVelocity=abs(w2.angularVelocity);
+  }
+  else
+  {
+    w2.angularVelocity=-abs(w2.angularVelocity);
   }
 }
